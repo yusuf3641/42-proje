@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yusufkaya/Desktop/for_Future/36/42-proje/anaeğitim/get_next_line",
+      "program": "/Users/yusufkaya/Desktop/for_Future/36/42-proje/anaeğitim/get_next_line/build/Debug/outDebug"
+    }
+  ]
+}
