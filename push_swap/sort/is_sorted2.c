@@ -6,14 +6,11 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:31:16 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/09/30 12:18:44 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/05 19:31:41 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
- int	get_min_value(t_stack *stack);
- int	find_pos(t_stack *a, int min);
 
 void	get_min_up(t_stack *a, int min)
 {

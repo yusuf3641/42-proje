@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 20:37:09 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/09/28 12:44:14 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/04 19:55:59 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_node	*node_new(int value)
 	if (!n)
 		return (NULL);
 	n->value = value;
+	n->index = 0;
 	n->prev = NULL;
 	n->next = NULL;
 	return (n);

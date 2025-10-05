@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 20:37:12 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/09/30 11:45:17 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/05 20:01:42 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*prev;
 	struct s_node	*next;
 
 }					t_node;
 
-typedef struct s_stack
+typedef struct s_stack 
 {
 	char			name;
 	int				size;
@@ -66,5 +67,17 @@ void				sort_three(t_stack *a);
 void				sort_help_three(t_stack *a);
 void				sort_four_five(t_stack *a, t_stack *b);
 void				small_sort(t_stack *a, t_stack *b);
+int					get_min_value(t_stack *stack);
+int					find_pos(t_stack *a, int min);
+
+int					*ps_make_indicates(int *vals, int n);
+int					main(int argc, char **argv);
+int					ps_parse_args(int argc, char **argv, int **out, int *n);
+int					ps_has_dup(int *a, int n);
+int					ps_atoi_strict(const char *s, int *out);
+
+void				bite_loop(t_stack *a, t_stack *b, int n);
+int					ps_is_sorted(int *a, int n);
+int					put_error(void);
 
 #endif
