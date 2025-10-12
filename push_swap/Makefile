@@ -1,48 +1,28 @@
-# **************************************************************************** #
-#                                   Makefile                                   #
-# **************************************************************************** #
+NAME = push_swap
 
-NAME    = push_swap.a
-CC      = cc
-CFLAGS  = -Wall -Wextra -Werror
-INCS    = -I .
+CC = cc
 
-OBJ_DIR = .obj
-MKDIR   = mkdir -p
-RM      = rm -rf
+FLAGS = -Wall -Wextra -Werror
 
-# Explicit source list (no wildcard)
-SRCS = \
-	main.c \
-	stack_core.c \
-	stack_utils.c \
-	array/array1.c \
-	array/argv_check.c \
-	array/argv_check2.c \
-	change/change_top_ab.c \
-	change/change_top2_swap.c \
-	rotate/rotate_down_up.c \
-	rotate/rotate_up_down_ab.c \
-	sort/is_sorted.c \
-	sort/is_sorted2.c \
-	radix_algorithm/bite.c
+SRCS = main.c stack_core.c stack_utils.c array/array1.c array/argv_check.c array/argv_check2.c array/string_utils.c array/string_utils2.c \
+change/change_top_ab.c change/change_top2_swap.c rotate/rotate_down_up.c rotate/rotate_up_down_ab.c sort/is_sorted.c \
+sort/is_sorted2.c radix_algorithm/bite.c
 
-OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-$(OBJ_DIR)/%.o: %.c push_swap.h
-	@$(MKDIR) $(dir $@)
-	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+%.o: %.c
+	$(CC) $(FLAGS) -I. -c $< -o $@
 
 clean:
-	$(RM) $(OBJ_DIR)
+	rm -f $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

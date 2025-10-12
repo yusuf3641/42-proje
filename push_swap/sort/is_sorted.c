@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 15:18:36 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/09/30 11:52:40 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/11 19:35:26 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	is_sorted(t_stack *a)
 	}
 	return (1);
 }
+
 void	sort_two(t_stack *a)
 {
 	t_node	*s;
@@ -37,6 +38,7 @@ void	sort_two(t_stack *a)
 	if (s->value > s->next->value)
 		op_sa(a);
 }
+
 void	sort_three(t_stack *a)
 {
 	int	x;
@@ -69,4 +71,18 @@ void	sort_help_three(t_stack *a)
 {
 	op_sa(a);
 	op_ra(a);
+}
+
+int	ps_is_sorted(int *a, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < n)
+	{
+		if (a[i] > a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
