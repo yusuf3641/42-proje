@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:31:16 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/10 11:39:11 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/11 19:42:08 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	find_pos(t_stack *a, int min)
 	}
 	return (pos);
 }
+
 void	small_sort(t_stack *a, t_stack *b)
 {
 	if (!a || a->size <= 1 || is_sorted(a))

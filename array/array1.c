@@ -6,13 +6,13 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 16:18:58 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 14:07:21 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 11:19:12 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ps_copy_ints(int *dst, const int *src, int n)
+void	ps_copy_ints(int *dst, const int *src, int n)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ static void	ps_copy_ints(int *dst, const int *src, int n)
 	}
 }
 
-static void	ps_sort_ints(int *a, int n)
+void	ps_sort_ints(int *a, int n)
 {
 	int	i;
 	int	j;
@@ -48,7 +48,7 @@ static void	ps_sort_ints(int *a, int n)
 	}
 }
 
-static void	while_loop(int *vals, int *sorted, int *idx, int n)
+void	while_loop(int *vals, int *sorted, int *idx, int n)
 {
 	int	i;
 	int	j;
@@ -69,6 +69,7 @@ static void	while_loop(int *vals, int *sorted, int *idx, int n)
 		i++;
 	}
 }
+
 int	*ps_make_indicates(int *out, int n)
 {
 	int	*sorted;

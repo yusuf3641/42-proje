@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 20:37:12 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 18:47:24 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 11:19:21 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_data
+{
+	int				n;
+	int				*idx;
+}					t_data;
 
 typedef struct s_node
 {
@@ -67,8 +73,7 @@ void				small_sort(t_stack *a, t_stack *b);
 int					get_min_value(t_stack *stack);
 int					find_pos(t_stack *a, int min);
 
-int					*ps_make_indicates(int *vals, int n);
-int					main(int argc, char **argv);
+int					*ps_make_indicates(int *out, int n);
 int					ps_parse_args(int argc, char **argv, int **out, int *n);
 int					ps_parse_string(char *str, int **out, int *n);
 
@@ -78,6 +83,9 @@ void				ps_free_partial_result(char **result, int count);
 int					ps_count_words(char *str);
 char				**ps_split(char *str, char c);
 void				ps_free_split(char **split, int count);
+void				ps_copy_ints(int *dst, const int *src, int n);
+void				ps_sort_ints(int *a, int n);
+void				while_loop(int *vals, int *sorted, int *idx, int n);
 
 int					ps_has_dup(int *a, int n);
 int					ps_atoi_strict(const char *s, int *out);
@@ -86,11 +94,15 @@ void				init_and_fill_stack(t_stack *a, int *out, int *idx, int n);
 void				cleanup_resources(t_stack *a, t_stack *b, int *idx,
 						int *out);
 int					init_data_and_validate(int argc, char **argv, int **out,
-						int *n, int **idx);
+						t_data *data);
 
 void				bite_loop(t_stack *a, t_stack *b, int n);
 
 int					ps_is_sorted(int *a, int n);
 int					put_error(void);
+void				ps_skip_delimiters(char *str, int *i, char c);
+void				ps_skip_word(char *str, int *i, char c);
+int					ps_next_word(char *str, char **out, int *i, char c);
+char				**ps_split(char *str, char c);
 
 #endif

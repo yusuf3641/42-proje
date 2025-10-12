@@ -6,28 +6,11 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 17:50:00 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/10 18:09:23 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 11:20:21 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ps_strncpy(char *dst, char *src, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-}
 
 char	*ps_allocate_word(char *str, int start, int end)
 {
@@ -74,6 +57,23 @@ int	ps_count_words(char *str)
 		i++;
 	}
 	return (count);
+}
+
+void	ps_strncpy(char *dst, char *src, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n && src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dst[i] = '\0';
+		i++;
+	}
 }
 
 void	ps_free_split(char **split, int count)

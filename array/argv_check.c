@@ -6,44 +6,11 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 21:53:13 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 18:49:21 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/11 20:03:09 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char	**ps_split(char *str, char c)
-{
-	char	**result;
-	int		words;
-	int		i;
-	int		j;
-	int		start;
-
-	words = ps_count_words(str);
-	result = malloc(sizeof(char *) * (words + 1));
-	if (!result)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (j < words)
-	{
-		while (str[i] && (str[i] == c || str[i] == '\t' || str[i] == '\n'))
-			i++;
-		start = i;
-		while (str[i] && str[i] != c && str[i] != '\t' && str[i] != '\n')
-			i++;
-		result[j] = ps_allocate_word(str, start, i);
-		if (!result[j])
-		{
-			ps_free_partial_result(result, j);
-			return (NULL);
-		}
-		j++;
-	}
-	result[j] = NULL;
-	return (result);
-}
 
 static int	ps_parse_array(char **argv, int count, int **out)
 {

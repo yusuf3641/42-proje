@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 08:34:52 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 14:21:46 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/11 20:03:09 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	push_front(t_stack *s, t_node *n)
 		s->last = n;
 	s->size += 1;
 }
+
 t_node	*pop_front(t_stack *s)
 {
 	t_node	*out;
@@ -42,6 +43,7 @@ t_node	*pop_front(t_stack *s)
 	s->size -= 1;
 	return (out);
 }
+
 void	push_back(t_stack *s, t_node *n)
 {
 	if (!s || !n)
@@ -55,6 +57,7 @@ void	push_back(t_stack *s, t_node *n)
 	s->last = n;
 	s->size += 1;
 }
+
 t_node	*pop_back(t_stack *s)
 {
 	t_node	*out;
@@ -71,4 +74,19 @@ t_node	*pop_back(t_stack *s)
 	out->next = NULL;
 	s->size -= 1;
 	return (out);
+}
+
+void	init_and_fill_stack(t_stack *a, int *out, int *idx, int n)
+{
+	t_node	*node;
+	int		i;
+
+	i = 0;
+	while (n > i)
+	{
+		node = node_new(out[i]);
+		node->index = idx[i];
+		push_back(a, node);
+		i++;
+	}
 }

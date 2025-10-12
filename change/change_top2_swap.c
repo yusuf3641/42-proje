@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 12:03:59 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 18:47:24 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/11 19:39:25 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	swap_top2(t_stack *s)
 		s->last = first;
 	s->up = second;
 }
+
 void	op_sa(t_stack *a)
 {
 	if (!a || a->size < 2)
@@ -40,6 +41,7 @@ void	op_sa(t_stack *a)
 	swap_top2(a);
 	write(1, "sa\n", 3);
 }
+
 void	op_sb(t_stack *b)
 {
 	if (!b || b->size < 2)
