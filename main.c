@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:51:23 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 20:03:09 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 14:05:46 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	cleanup_resources(t_stack *a, t_stack *b, int *idx, int *out)
 
 int	init_data_and_validate(int argc, char **argv, int **out, t_data *data)
 {
-	if (!ps_parse_args(argc, argv, out, &data->n))
+	if (ps_parse_args(argc, argv, out, &data->n))
 		return (put_error());
 	if (main_helper(out, data->n) == 0)
 	{

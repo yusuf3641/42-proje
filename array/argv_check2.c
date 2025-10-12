@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 14:55:01 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 20:03:09 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 14:52:45 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static int	parse_digits(const char *s, int *i, long *v, int sign)
 		if ((sign == 1 && *v > INT_MAX) || (sign == -1 && *v < INT_MIN))
 			return (0);
 	}
+	if (s[*i] && !(s[*i] >= '0' && s[*i] <= '9'))
+		return (0);
 	return (dig);
 }
 
@@ -59,6 +61,8 @@ int	ps_atoi_strict(const char *s, int *out)
 		i++;
 	parse_sign(s, &i, &sign);
 	dig = parse_digits(s, &i, &v, sign);
+	if (dig == 0)
+		return (0);
 	while ((is_space(s[i++])))
 		if (!dig || s[i++] != '\0')
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 17:50:00 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/12 11:20:21 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 14:09:58 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ps_count_words(char *str)
 	{
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 		{
+			if (!(str[i] <= '9' && str[i] >= '0'))
+				return (0);
 			if (!in_word)
 			{
 				count++;

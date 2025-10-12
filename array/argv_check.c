@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 21:53:13 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/11 20:03:09 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 13:54:00 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ static int	ps_parse_array(char **argv, int count, int **out)
 
 	a = malloc(sizeof(int) * count);
 	if (!a)
-		return (0);
+		return (1);
 	i = 0;
 	while (i < count)
 	{
 		if (!ps_atoi_strict(argv[i], &x))
 		{
 			free(a);
-			return (0);
+			return (1);
 		}
 		a[i++] = x;
 	}
 	*out = a;
-	return (1);
+	return (0);
 }
 
 int	ps_parse_args(int argc, char **argv, int **out, int *n)
