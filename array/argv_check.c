@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 21:53:13 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/12 13:54:00 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:17:05 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,37 @@ static int	ps_parse_array(char **argv, int count, int **out)
 		a[i++] = x;
 	}
 	*out = a;
-	return (0);
+	return (i);
 }
 
-int	ps_parse_args(int argc, char **argv, int **out, int *n)
+int	ps_parse_args(char **argv, int **out, int *n)
 {
-	if (argc == 2)
-		return (ps_parse_string(argv[1], out, n));
-	*n = argc - 1;
+	int	i;
+	int	j;
+	int	control;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if (argv[i][j] == ' ' || argv[i][j] == '\t' || argv[i][j] == '\n')
+				control = 1;
+			j++;
+		}
+		if (control == 1)
+			ps_parse_string(argv[i], out, n);
+		else
+			*n += ps_parse_array(argv[i], *n, out);
+		i++;
+	}
 	if (*n <= 0)
 	{
 		*out = NULL;
 		return (1);
 	}
-	return (ps_parse_array(argv + 1, *n, out));
+	return (*n);
 }
 
 int	ps_parse_string(char *str, int **out, int *n)
@@ -61,7 +78,7 @@ int	ps_parse_string(char *str, int **out, int *n)
 	}
 	words = ps_split(str, ' ');
 	if (!words)
-		return (0);
+		return (1);
 	result = ps_parse_array(words, *n, out);
 	ps_free_split(words, *n);
 	return (result);

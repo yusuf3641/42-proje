@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:51:23 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/12 14:05:46 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:15:09 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	cleanup_resources(t_stack *a, t_stack *b, int *idx, int *out)
 	free(out);
 }
 
-int	init_data_and_validate(int argc, char **argv, int **out, t_data *data)
+int	init_data_and_validate(char **argv, int **out, t_data *data)
 {
-	if (ps_parse_args(argc, argv, out, &data->n))
+	if (ps_parse_args(argv, out, &data->n))
 		return (put_error());
 	if (main_helper(out, data->n) == 0)
 	{
@@ -61,9 +61,10 @@ int	main(int argc, char **argv)
 	t_data	data;
 	t_stack	*a;
 	t_stack	*b;
-
+	
+	argc = 1;
 	out = NULL;
-	if (init_data_and_validate(argc, argv, &out, &data) != 1)
+	if (init_data_and_validate(argv, &out, &data) != 1)
 		return (0);
 	a = stack_init('a');
 	b = stack_init('b');

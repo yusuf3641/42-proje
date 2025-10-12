@@ -6,7 +6,7 @@
 /*   By: yuskaya <yuskaya@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 20:37:12 by yuskaya           #+#    #+#             */
-/*   Updated: 2025/10/12 11:51:58 by yuskaya          ###   ########.fr       */
+/*   Updated: 2025/10/12 20:13:56 by yuskaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int					get_min_value(t_stack *stack);
 int					find_pos(t_stack *a, int min);
 
 int					*ps_make_indicates(int *out, int n);
-int					ps_parse_args(int argc, char **argv, int **out, int *n);
+int					ps_parse_args(char **argv, int **out, int *n);
 int					ps_parse_string(char *str, int **out, int *n);
 
 void				ps_strncpy(char *dst, char *src, int n);
@@ -93,7 +93,7 @@ int					ps_atoi_strict(const char *s, int *out);
 void				init_and_fill_stack(t_stack *a, int *out, int *idx, int n);
 void				cleanup_resources(t_stack *a, t_stack *b, int *idx,
 						int *out);
-int					init_data_and_validate(int argc, char **argv, int **out,
+int					init_data_and_validate(char **argv, int **out,
 						t_data *data);
 
 void				bite_loop(t_stack *a, t_stack *b, int n);
