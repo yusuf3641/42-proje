@@ -75,7 +75,6 @@ int					find_pos(t_stack *a, int min);
 
 int					*ps_make_indicates(int *out, int n);
 int					ps_parse_args(char **argv, int **out, int *n);
-int					ps_parse_string(char *str, int **out, int *n);
 
 void				ps_strncpy(char *dst, char *src, int n);
 char				*ps_allocate_word(char *str, int start, int end);
@@ -104,5 +103,9 @@ void				ps_skip_delimiters(char *str, int *i, char c);
 void				ps_skip_word(char *str, int *i, char c);
 int					ps_next_word(char *str, char **out, int *i, char c);
 char				**ps_split(char *str, char c);
+
+int					contains_space(char *s);
+int					count_all_tokens(char **argv);
+int					fill_all(char **argv, int *out);
 
 #endif

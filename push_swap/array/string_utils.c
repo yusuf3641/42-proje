@@ -46,8 +46,6 @@ int	ps_count_words(char *str)
 	{
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 		{
-			if (!(str[i] <= '9' && str[i] >= '0'))
-				return (0);
 			if (!in_word)
 			{
 				count++;

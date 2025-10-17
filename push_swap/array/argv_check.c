@@ -12,74 +12,40 @@
 
 #include "push_swap.h"
 
-static int	ps_parse_array(char **argv, int count, int **out)
+int	count_all_tokens(char **argv)
 {
-	int	*a;
 	int	i;
-	int	x;
+	int	count;
 
-	a = malloc(sizeof(int) * count);
-	if (!a)
-		return (1);
-	i = 0;
-	while (i < count)
+	count = 0;
+	i = 1;
+	while (argv[i])
 	{
-		if (!ps_atoi_strict(argv[i], &x))
-		{
-			free(a);
-			return (1);
-		}
-		a[i++] = x;
+		if (contains_space(argv[i]))
+			count += ps_count_words(argv[i]);
+		else if (argv[i][0] != '\0')
+			count++;
+		i++;
 	}
-	*out = a;
-	return (i);
+	return (count);
 }
 
 int	ps_parse_args(char **argv, int **out, int *n)
 {
-	int	i;
-	int	j;
-	int	control;
+	int	count;
 
-	i = 1;
-	while (argv[i])
+	count = count_all_tokens(argv);
+	if (count <= 0)
+		return (1);
+	*out = (int *)malloc(sizeof(int) * count);
+	if (!*out)
+		return (1);
+	if (fill_all(argv, *out))
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (argv[i][j] == ' ' || argv[i][j] == '\t' || argv[i][j] == '\n')
-				control = 1;
-			j++;
-		}
-		if (control == 1)
-			ps_parse_string(argv[i], out, n);
-		else
-			*n += ps_parse_array(argv[i], *n, out);
-		i++;
-	}
-	if (*n <= 0)
-	{
+		free(*out);
 		*out = NULL;
 		return (1);
 	}
-	return (*n);
-}
-
-int	ps_parse_string(char *str, int **out, int *n)
-{
-	char	**words;
-	int		result;
-
-	*n = ps_count_words(str);
-	if (*n <= 0)
-	{
-		*out = NULL;
-		return (1);
-	}
-	words = ps_split(str, ' ');
-	if (!words)
-		return (1);
-	result = ps_parse_array(words, *n, out);
-	ps_free_split(words, *n);
-	return (result);
+	*n = count;
+	return (0);
 }

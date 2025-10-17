@@ -38,12 +38,12 @@ static int	parse_digits(const char *s, int *i, long *v, int sign)
 	while (s[*i] >= '0' && s[*i] <= '9')
 	{
 		dig = 1;
-		*v = *v * 10 + (s[(*i)++] - '0');
-		if ((sign == 1 && *v > INT_MAX) || (sign == -1 && *v < INT_MIN))
+		*v = *v * 10 + (s[*i] - '0');
+		(*i)++;
+		if ((sign == 1 && *v > INT_MAX)
+			|| (sign == -1 && *v > (long)INT_MAX + 1))
 			return (0);
 	}
-	if (s[*i] && !(s[*i] >= '0' && s[*i] <= '9'))
-		return (0);
 	return (dig);
 }
 
@@ -63,10 +63,15 @@ int	ps_atoi_strict(const char *s, int *out)
 	dig = parse_digits(s, &i, &v, sign);
 	if (dig == 0)
 		return (0);
-	while ((is_space(s[i++])))
-		if (!dig || s[i++] != '\0')
-			return (0);
-	*out = (int)(sign * v);
+	while (is_space(s[i]))
+		i++;
+	if (s[i] != '\0')
+		return (0);
+	if (sign == -1)
+		v = -v;
+	if (v > INT_MAX || v < INT_MIN)
+		return (0);
+	*out = (int)v;
 	return (1);
 }
 

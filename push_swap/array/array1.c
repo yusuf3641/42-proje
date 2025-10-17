@@ -74,7 +74,6 @@ int	*ps_make_indicates(int *out, int n)
 {
 	int	*sorted;
 	int	*idx;
-	int	i;
 
 	sorted = (int *)malloc(sizeof(int) * n);
 	idx = (int *)malloc(sizeof(int) * n);
@@ -86,7 +85,6 @@ int	*ps_make_indicates(int *out, int n)
 	}
 	ps_copy_ints(sorted, out, n);
 	ps_sort_ints(sorted, n);
-	i = 0;
 	while_loop(out, sorted, idx, n);
 	free(sorted);
 	return (idx);

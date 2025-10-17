@@ -61,8 +61,9 @@ int	main(int argc, char **argv)
 	t_data	data;
 	t_stack	*a;
 	t_stack	*b;
-	
-	argc = 1;
+
+	if (argc < 2)
+		return (0);
 	out = NULL;
 	if (init_data_and_validate(argv, &out, &data) != 1)
 		return (0);

@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/yusufkaya/Desktop/projelerim/42-proje/push_swap",
+      "program": "/Users/yusufkaya/Desktop/projelerim/42-proje/push_swap/build/Debug/outDebug"
+    }
+  ]
+}
